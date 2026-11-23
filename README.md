@@ -16,5 +16,5 @@ node serve.mjs   # http://localhost:8000
 
 ## Deploy
 
-`.github/workflows/pages.yml` builds and publishes to GitHub Pages on every push to `master`.
+`.github/workflows/pages.yml` builds and publishes to GitHub Pages on every push to `main`.
 In the repo settings, set Pages → Source to "GitHub Actions".
