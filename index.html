@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garbage Truck Simulator</title>
+<link rel="stylesheet" href="style.css">
+<script>
+  window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]] }, svg: { fontCache: "global" } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header>
+  <h1>Garbage Truck Simulator</h1>
+  <p>Do more frequent pickups need more trucks? Containers fill at a steady rate. Trucks
+  sweep the route and empty containers until they're full, then drive the grid to the
+  corner, haul to the dump, and come back. The equations update as you move the sliders,
+  and a minute-by-minute simulation below checks them.</p>
+</header>
+<main>
+  <section id="model">
+    <h2>Model</h2>
+    <div id="equations"></div>
+  </section>
+  <section id="controls">
+    <h2>Parameters</h2>
+    <div class="presets"></div>
+  </section>
+  <section id="viz">
+    <h2>Simulation</h2>
+    <svg id="map" role="img" aria-label="Street grid with containers and trucks"></svg>
+    <div id="clock"></div>
+    <div class="buttons">
+      <button id="play">Pause</button>
+      <button id="reset">Restart</button>
+      <label>Idle speed <input type="range" id="simSpeed" min="0" max="100" value="80"> <output id="simSpeedOut"></output></label>
+      <label>Trucks-out speed <input type="range" id="truckSpeed" min="0" max="100" value="35"> <output id="truckSpeedOut"></output></label>
+    </div>
+    <div id="legend">
+      <span><i class="k-ok"></i>container fill</span>
+      <span><i class="k-warn"></i>&gt; ⅔ full</span>
+      <span><i class="k-full"></i>full</span>
+      <span><i class="k-over"></i>trash on sidewalk</span>
+      <span><i class="k-truck"></i>truck (bar = load)</span>
+    </div>
+    <h3>Equations vs. simulation <small>(rolling 7-day average)</small></h3>
+    <table id="simStats"></table>
+  </section>
+</main>
+<footer>
+  <p>Toy model, not a forecast. Inspired by a
+  <a href="https://bsky.app/profile/stephenjacobsmith.com/post/3n2yz2p7bvk2l">Bluesky thread</a>
+  on NYC trash containerization.</p>
+</footer>
+<script type="module" src="dist/main.js"></script>
+</body>
+</html>

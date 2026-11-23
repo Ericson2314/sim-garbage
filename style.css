@@ -1,0 +1,73 @@
+:root {
+  --bg: #f7f6f2; --fg: #1d1d1b; --muted: #6b6b66; --panel: #ffffff; --line: #d9d7d0;
+  --street: #bdb9ae; --grid: #e4e1d9; --ok: #3b9a5a; --warn: #d9a21b; --full: #e07a1f; --over: #c8412f;
+  --truck: #2563eb; --dump: #6b4f2a; --accent: #2563eb;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161614; --fg: #ecebe6; --muted: #9a9a93; --panel: #201f1c; --line: #34332e;
+    --street: #5a5850; --grid: #2c2b27; --ok: #4fbf74; --warn: #e8b631; --full: #f08a33; --over: #ef5b46;
+    --truck: #60a5fa; --dump: #b08850; --accent: #60a5fa;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header, footer { max-width: 1240px; margin: 0 auto; padding: 16px; }
+header h1 { margin: 0 0 4px; font-size: 1.6rem; }
+header p, footer p { margin: 0; color: var(--muted); max-width: 75ch; }
+a { color: var(--accent); }
+main { max-width: 1240px; margin: 0 auto; padding: 0 16px;
+  display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr) 330px; }
+#model { grid-column: 1; }
+#controls { grid-column: 2; grid-row: 1 / span 2; align-self: start; position: sticky; top: 8px;
+  max-height: calc(100vh - 16px); overflow-y: auto; }
+#viz { grid-column: 1; }
+@media (max-width: 880px) {
+  main { grid-template-columns: minmax(0, 1fr); }
+  #model, #controls, #viz { grid-column: 1; grid-row: auto; position: static; max-height: none; }
+}
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; min-width: 0; }
+h2 { margin: 0 0 8px; font-size: 1.1rem; }
+section h3 { margin: 16px 0 4px; font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+#equations { overflow-x: auto; }
+#equations p { margin: 6px 0; }
+mjx-container[display="true"] { margin: 6px 0 !important; }
+
+.ctl { margin: 6px 0; }
+.ctl label { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
+.ctl .sym { color: var(--muted); }
+.ctl output { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.ctl input { width: 100%; }
+.presets { display: flex; gap: 6px; flex-wrap: wrap; }
+button { font: inherit; font-size: 13px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--fg); cursor: pointer; }
+
+#map { width: 100%; height: auto; display: block; }
+#map .grid { stroke: var(--grid); stroke-width: 1; }
+#map .street { stroke: var(--street); stroke-width: 3; stroke-linecap: round; }
+#map .haul { stroke: var(--street); stroke-width: 3; stroke-dasharray: 4 4; }
+#map .dump { fill: var(--dump); }
+#map .label { fill: var(--muted); font-size: 10px; text-anchor: middle; }
+#map .barbox { fill: none; stroke: var(--line); stroke-width: .75; }
+#map .barbox.over { stroke: var(--over); stroke-width: 1.5; }
+#map .bar { fill: var(--ok); }
+#map .bar.warn { fill: var(--warn); }
+#map .bar.full { fill: var(--full); }
+#map .bar.over { fill: var(--over); }
+#map .truck { fill: var(--truck); }
+#map g .barbox { fill: var(--panel); }
+
+#clock { font-variant-numeric: tabular-nums; font-weight: 600; margin-top: 8px; }
+.buttons { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 8px; font-size: 13px; }
+#legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; color: var(--muted); font-size: 13px; }
+#legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+.k-ok { background: var(--ok); } .k-warn { background: var(--warn); } .k-full { background: var(--full); }
+.k-over { background: var(--over); } .k-truck { background: var(--truck); }
+
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 14px; }
+th { text-align: right; font-weight: 600; color: var(--muted); padding: 4px 6px; }
+td { padding: 4px 6px; border-bottom: 1px solid var(--line); }
+td:not(:first-child) { text-align: right; font-weight: 600; }
+small { color: var(--muted); font-weight: normal; }
+.bad { color: var(--over); }
