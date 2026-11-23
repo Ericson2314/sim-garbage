@@ -71,3 +71,4 @@ td { padding: 4px 6px; border-bottom: 1px solid var(--line); }
 td:not(:first-child) { text-align: right; font-weight: 600; }
 small { color: var(--muted); font-weight: normal; }
 .bad { color: var(--over); }
+#logo { display: block; width: 100%; max-width: 560px; height: auto; margin-bottom: 8px; }

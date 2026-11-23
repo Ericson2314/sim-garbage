@@ -1,4 +1,8 @@
-# Garbage Truck Simulator
+# Sim Garbage
+
+![Sim Garbage](logo.svg)
+
+Live: <https://ericson2314.github.io/sim-garbage/>
 
 Do more frequent trash pickups need more trucks? A toy model of one collection route,
 with sliders for truck size, speed, container count and size, staffing, and garbage flux.
